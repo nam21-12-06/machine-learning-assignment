@@ -1,0 +1,41 @@
+# Python virtual environments and local configuration
+.env/
+.venv/
+venv/
+env/
+*.env
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Jupyter local metadata
+.ipynb_checkpoints/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Downloaded datasets and raw data
+ml_assignment/data/*.zip
+ml_assignment/data/raw/*
+!ml_assignment/data/raw/.gitkeep
+
+# Generated feature files can be large and reproducible from the notebook
+ml_assignment/features/*
+!ml_assignment/features/.gitkeep
+
+# Local assignment source document; do not redistribute without permission
+MLAssignment_ELv2.pdf
