@@ -29,13 +29,21 @@ Thumbs.db
 .idea/
 
 # Downloaded datasets and raw data
-ml_assignment/data/*.zip
-ml_assignment/data/raw/*
-!ml_assignment/data/raw/.gitkeep
+data/*
+!data/raw/
+data/raw/*
+!data/raw/.gitkeep
 
-# Generated feature files can be large and reproducible from the notebook
-ml_assignment/features/*
-!ml_assignment/features/.gitkeep
+# Generated artifacts are reproducible from the notebook
+features/*
+!features/.gitkeep
+reports/*
+!reports/.gitkeep
+models/*
+!models/.gitkeep
+
+# Legacy runtime output from the previous nested project layout
+ml_assignment/
 
 # Local assignment source document; do not redistribute without permission
 MLAssignment_ELv2.pdf
