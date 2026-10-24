@@ -35,11 +35,8 @@ data/raw/*
 !data/raw/.gitkeep
 
 # Generated artifacts are reproducible from the notebook
-features/*
 !features/.gitkeep
-reports/*
 !reports/.gitkeep
-models/*
 !models/.gitkeep
 
 # Legacy runtime output from the previous nested project layout
