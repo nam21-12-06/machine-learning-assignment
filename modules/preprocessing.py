@@ -1,5 +1,3 @@
-"""Preprocessing utilities for the diabetes readmission project."""
-
 import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer

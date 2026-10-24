@@ -1,5 +1,3 @@
-"""Classification evaluation utilities."""
-
 import pandas as pd
 from sklearn.metrics import (
     accuracy_score,

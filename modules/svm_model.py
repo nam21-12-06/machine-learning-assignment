@@ -1,5 +1,3 @@
-"""Linear SVM construction and cross-validation utilities."""
-
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.model_selection import cross_validate
