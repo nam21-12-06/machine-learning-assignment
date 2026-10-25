@@ -1,0 +1,6 @@
+artifact,shape,dtype,size_mb,feature_count,best_configuration
+X_train_svm_features.npy,79512 x 226,float32,68.54913330078125,226,SVM-6 | Standard | No PCA | C=0.1 | Balanced
+X_test_svm_features.npy,19831 x 226,float32,17.09685516357422,226,SVM-6 | Standard | No PCA | C=0.1 | Balanced
+y_train.npy,79512,int64,0.60675048828125,226,SVM-6 | Standard | No PCA | C=0.1 | Balanced
+y_test.npy,19831,int64,0.15142059326171875,226,SVM-6 | Standard | No PCA | C=0.1 | Balanced
+svm_feature_names.npy,226,<U51,0.04409027099609375,226,SVM-6 | Standard | No PCA | C=0.1 | Balanced
