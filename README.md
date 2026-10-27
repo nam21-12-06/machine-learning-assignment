@@ -10,7 +10,7 @@ The target variable has three classes:
 
 ## Project Status
 
-The notebook currently implements:
+The main notebook, `ML_Assignment_Diabetes_Readmission_models.ipynb`, implements:
 
 - Exploratory data analysis (EDA)
 - Missing-value and duplicate analysis
@@ -20,23 +20,21 @@ The notebook currently implements:
 - Age feature engineering
 - Configurable imputation, scaling, and one-hot encoding
 - PCA explained-variance analysis
-
-Model training, hyperparameter experiments, and final model comparison are planned next.
+- Group-aware experiments for Linear SVM, Logistic Regression, and Random Forest
+- A PyTorch MLP extension with patient-grouped validation and four-model comparison
 
 ## Repository Structure
 
 ```text
 Assignment/
-├── ML_Assignment_Diabetes_Readmission.ipynb
+├── ML_Assignment_Diabetes_Readmission_models.ipynb
 ├── README.md
 ├── requirements.txt
-├── .gitignore
-└── ml_assignment/
-	├── data/
-	│   └── raw/
-	├── modules/
-	├── features/
-	└── reports/
+├── data/
+├── modules/
+├── features/
+├── models/
+└── reports/
 ```
 
 Downloaded datasets, local virtual environments, generated feature files, and notebook checkpoints are excluded by `.gitignore`.
@@ -47,7 +45,7 @@ The notebook downloads the dataset automatically from the public UCI repository:
 
 <https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip>
 
-The raw files are extracted into `ml_assignment/data/raw/` when the notebook is executed. The dataset is not committed to this repository.
+The raw files are extracted into `data/raw/` when the notebook is executed. The dataset is not committed to this repository.
 
 ## Setup
 
@@ -83,7 +81,7 @@ Start Jupyter:
 jupyter notebook
 ```
 
-Open `ML_Assignment_Diabetes_Readmission.ipynb` and run all cells from top to bottom.
+Open `ML_Assignment_Diabetes_Readmission_models.ipynb` and run all cells from top to bottom. Install `requirements.txt` first; Phase 7 uses PyTorch and runs on CUDA when available, otherwise on CPU.
 
 ## Pipeline Overview
 
