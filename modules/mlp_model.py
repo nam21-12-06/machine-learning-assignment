@@ -256,6 +256,120 @@ def train_mlp_pipeline(
     return model, pd.DataFrame(history), best_epoch, best_macro_f1
 
 
+def train_mlp_fixed_epochs(
+    model,
+    train_loader,
+    class_weights,
+    device,
+    epochs,
+    learning_rate=1e-3,
+    learning_rates=None,
+    weight_decay=1e-4,
+    checkpoint_path=None,
+):
+    """Refit an MLP for a fixed epoch count without validation feedback."""
+    if epochs < 1:
+        raise ValueError("epochs must be at least 1")
+    if learning_rate <= 0 or not np.isfinite(learning_rate):
+        raise ValueError("learning_rate must be positive and finite")
+
+    if learning_rates is None:
+        epoch_learning_rates = np.full(epochs, learning_rate, dtype=float)
+    else:
+        epoch_learning_rates = np.asarray(learning_rates, dtype=float)
+        if epoch_learning_rates.shape != (epochs,):
+            raise ValueError("learning_rates must contain exactly one value per epoch")
+        if not np.isfinite(epoch_learning_rates).all() or np.any(
+            epoch_learning_rates <= 0
+        ):
+            raise ValueError("learning_rates must contain positive finite values")
+
+    device = torch.device(device)
+    model = model.to(device)
+    weights = torch.as_tensor(class_weights, dtype=torch.float32, device=device)
+    if (
+        weights.numel() != len(LABELS)
+        or not torch.isfinite(weights).all()
+        or torch.any(weights <= 0)
+    ):
+        raise ValueError("class_weights must contain one positive finite value per class")
+
+    criterion = nn.CrossEntropyLoss(weight=weights)
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
+        lr=float(epoch_learning_rates[0]),
+        weight_decay=weight_decay,
+    )
+
+    history = []
+    for epoch, epoch_learning_rate in enumerate(epoch_learning_rates, start=1):
+        for parameter_group in optimizer.param_groups:
+            parameter_group["lr"] = float(epoch_learning_rate)
+
+        model.train()
+        train_loss_total = 0.0
+        train_targets = []
+        train_predictions = []
+        train_samples = 0
+
+        for features, labels in train_loader:
+            features = features.to(device)
+            labels = labels.to(device)
+            optimizer.zero_grad(set_to_none=True)
+            logits = model(features)
+            loss = criterion(logits, labels)
+            loss.backward()
+            optimizer.step()
+
+            batch_size = labels.size(0)
+            train_loss_total += loss.item() * batch_size
+            train_samples += batch_size
+            train_targets.append(labels.detach().cpu().numpy())
+            train_predictions.append(logits.detach().argmax(dim=1).cpu().numpy())
+
+        if train_samples == 0:
+            raise RuntimeError("train_loader did not produce any samples")
+
+        train_macro_f1 = f1_score(
+            np.concatenate(train_targets),
+            np.concatenate(train_predictions),
+            labels=LABELS,
+            average="macro",
+            zero_division=0,
+        )
+        history.append(
+            {
+                "epoch": epoch,
+                "train_loss": train_loss_total / train_samples,
+                "train_macro_f1": train_macro_f1,
+                "learning_rate": float(epoch_learning_rate),
+            }
+        )
+        print(
+            f"Refit epoch {epoch:03d}/{epochs} | "
+            f"train loss={history[-1]['train_loss']:.4f} | "
+            f"train Macro-F1={train_macro_f1:.4f}"
+        )
+
+    if checkpoint_path is not None:
+        checkpoint = Path(checkpoint_path)
+        checkpoint.parent.mkdir(parents=True, exist_ok=True)
+        torch.save(
+            {
+                "model_state_dict": {
+                    key: value.detach().cpu().clone()
+                    for key, value in model.state_dict().items()
+                },
+                "input_dim": model.network[0].in_features,
+                "num_classes": model.network[-1].out_features,
+                "training_epochs": epochs,
+            },
+            checkpoint,
+        )
+
+    return model, pd.DataFrame(history)
+
+
 def evaluate_mlp(model, data_loader, device):
     """Return test metrics, class report, confusion matrix, and probabilities."""
     device = torch.device(device)
