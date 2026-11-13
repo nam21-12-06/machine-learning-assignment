@@ -146,8 +146,11 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 ### Option A: Run in Google Colab (Recommended)
 
-1. Click the badge to open the notebook directly in Colab:  
-   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/ML_Assignment_Diabetes_Readmission_models.ipynb)
+1. Open the notebook directly in Google Colab:  
+   - **Interactive Badge**:  
+     [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/ML_Assignment_Diabetes_Readmission_models.ipynb)  
+   - **Direct URL**:  
+     https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/ML_Assignment_Diabetes_Readmission_models.ipynb
 2. Select **Runtime -> Change runtime type** and choose **T4 GPU** (or CPU).
 3. Select **Runtime -> Run all** (`Ctrl + F9`).
 4. The notebook will automatically:
@@ -185,11 +188,17 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 ## 7. Submission Package & Deliverables
 
 As required by Section 5 of the course specification:
-- **Colab Notebook**: `ML_Assignment_Diabetes_Readmission_models.ipynb` (runs end-to-end via `Run all`).
-- **PDF Report**: `[Link or path to PDF report when completed]`.
-- **Extracted Feature Files**: Saved in `features/` in `.npy` format.
-- **GitHub Repository**: [https://github.com/nam21-12-06/machine-learning-assignment](https://github.com/nam21-12-06/machine-learning-assignment).
-- **Submission `.zip` Structure**: Formatted with `notebooks/`, `modules/`, `reports/`, and `features/`.
+- **Google Colab Notebook (Direct Link)**:  
+  https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/ML_Assignment_Diabetes_Readmission_models.ipynb  
+  *(Opens the canonical `ML_Assignment_Diabetes_Readmission_models.ipynb` directly in Google Colab and runs end-to-end via `Run all`)*
+- **GitHub Repository**:  
+  https://github.com/nam21-12-06/machine-learning-assignment
+- **PDF Report**:  
+  `[Link or path to PDF report when completed]`
+- **Extracted Feature Files**:  
+  Exported under `features/` in `.npy` format and reproducible via notebook.
+- **Submission `.zip` Directory Structure**:  
+  Formatted with `notebooks/`, `modules/`, `reports/`, and `features/`.
 
 ---
 
