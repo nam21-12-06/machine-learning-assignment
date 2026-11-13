@@ -92,6 +92,23 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 | **3** | **Linear SVM** | SVM-2 (Standard, No PCA, C=1, Balanced) | **0.5594** | 0.4372 | 0.4393 | 0.1599 | 0.1939 | N/A |
 | **4** | **Logistic Regression** | LR-1 (Standard, No PCA, SAGA, Balanced) | 0.4854 | 0.4477 | 0.4310 | 0.3153 | 0.2421 | 0.6533 |
 
+<p align="center">
+  <img src="reports/mlp/mlp_four_model_comparison.png" alt="Four-Model Performance Comparison" width="100%" />
+  <br>
+  <em>Figure 1: Benchmark comparison across all four model paradigms on the held-out test set (N=19,831), evaluating overall metrics, critical early readmission sensitivity (<30), and ranking discrimination (ROC-AUC / Average Precision).</em>
+</p>
+
+<details>
+<summary><b>Click to expand: Multilayer Perceptron (MLP) Diagnostic Training Curves & Test Confusion Matrix</b></summary>
+
+<br>
+
+| MLP Training Dynamics (Loss & Macro-F1 with Early Stopping) | Champion MLP Test Confusion Matrix |
+|:---:|:---:|
+| <img src="reports/mlp/mlp_training_curves.png" width="100%" alt="MLP Training Curves" /> | <img src="reports/mlp/mlp_confusion_matrix.png" width="85%" alt="MLP Confusion Matrix" /> |
+
+</details>
+
 ### Findings & Insights:
 1. **Overall Champion**: The **Multilayer Perceptron (MLP)** achieved the highest test Macro-F1 (**0.4526**) and Balanced Accuracy (**46.93%**), confirming that deep funnel architectures effectively capture non-linear clinical interactions.
 2. **Clinical Sensitivity**: The MLP caught **37.52%** of early readmissions (`<30`), higher than Random Forest (36.23%) and Linear SVM (15.99%).
