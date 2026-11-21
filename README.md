@@ -209,14 +209,12 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 ## 7. Submission Package & Deliverables
 
-- **Google Colab Notebook (Direct Link)**:  
-  https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/notebooks/ML_Assignment_Diabetes_Readmission_models.ipynb  
+- **Google Colab Notebook**:  
+  [Open in Google Colab](https://colab.research.google.com/github/nam21-12-06/machine-learning-assignment/blob/main/notebooks/ML_Assignment_Diabetes_Readmission_models.ipynb)  
   _(Opens the canonical `notebooks/ML_Assignment_Diabetes_Readmission_models.ipynb` directly in Google Colab and runs end-to-end via `Run all`)_
 
 - **PDF Report**:  
-  Saved under `reports/`.
-
-  https://drive.google.com/drive/folders/1Y_24G4JwDfKJVK6l5-OkkJOtBVN78bRS?usp=drive_link
+  Saved under `reports/` (Access via [Google Drive](https://drive.google.com/drive/folders/1Y_24G4JwDfKJVK6l5-OkkJOtBVN78bRS?usp=drive_link))
 
 - **Submission `.zip` Directory Structure**:  
   Formatted with `notebooks/`, `modules/`, `reports/`, `features/`, and `results/`.
