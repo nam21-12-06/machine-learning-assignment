@@ -95,7 +95,7 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 | **4** | **Logistic Regression** | LR-1 (Standard, No PCA, SAGA, Balanced)      |    0.4854     |      0.4477       |    0.4310     |    0.3153    |   0.2421   |    0.6533     |
 
 <p align="center">
-  <img src="reports/mlp/mlp_four_model_comparison.png" alt="Four-Model Performance Comparison" width="100%" />
+  <img src="results/mlp/mlp_four_model_comparison.png" alt="Four-Model Performance Comparison" width="100%" />
   <br>
   <em>Figure 1: Benchmark comparison across all four model paradigms on the held-out test set (N=19,831), evaluating overall metrics, critical early readmission sensitivity (<30), and ranking discrimination (ROC-AUC / Average Precision).</em>
 </p>
@@ -107,7 +107,7 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 |               MLP Training Dynamics (Loss & Macro-F1 with Early Stopping)                |                            Champion MLP Test Confusion Matrix                             |
 | :--------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
-| <img src="reports/mlp/mlp_training_curves.png" width="100%" alt="MLP Training Curves" /> | <img src="reports/mlp/mlp_confusion_matrix.png" width="85%" alt="MLP Confusion Matrix" /> |
+| <img src="results/mlp/mlp_training_curves.png" width="100%" alt="MLP Training Curves" /> | <img src="results/mlp/mlp_confusion_matrix.png" width="85%" alt="MLP Confusion Matrix" /> |
 
 </details>
 
@@ -124,7 +124,7 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 ```text
 .
-├── notebooks/                                       # Canonical Jupyter notebooks directory (Deliverable)
+├── notebooks/                                       # Canonical Jupyter notebooks directory (Section 5 deliverable)
 │   └── ML_Assignment_Diabetes_Readmission_models.ipynb  # Main end-to-end executable notebook
 ├── README.md                                        # Project documentation and metadata
 ├── requirements.txt                                 # Environment dependencies
@@ -152,7 +152,8 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 │   ├── logistic_regression_model.py                 # Warm-start SAGA LR & CV functions
 │   ├── random_forest_model.py                       # RF hyperparameter search & feature importance
 │   └── mlp_model.py                                 # PyTorch DiabetesMLP architecture, dataset, training
-└── reports/                                         # Experimental metrics, figures, and artifacts
+├── reports/                                         # Academic report directory (holds final Report PDF)
+└── results/                                         # Experimental metrics, figures, and CSV artifacts
     ├── master_model_comparison.csv                  # 4-model held-out test benchmark
     ├── master_cv_configurations_comparison.csv      # All 21 tested configurations
     ├── svm/                                         # SVM metrics and CV logs
@@ -216,11 +217,11 @@ As required by Section 5 of the course specification:
 - **GitHub Repository**:  
   https://github.com/nam21-12-06/machine-learning-assignment
 - **PDF Report**:  
-  `[Link or path to PDF report when completed]`
+  Saved under `reports/` (e.g., `reports/Report_GroupXX.pdf` when finalized).
 - **Extracted Feature Files**:  
   Exported under `features/` in `.npy` format and reproducible via notebook.
 - **Submission `.zip` Directory Structure**:  
-  Formatted with `notebooks/`, `modules/`, `reports/`, and `features/`.
+  Formatted with `notebooks/`, `modules/`, `reports/`, `features/`, and `results/`.
 
 ---
 
