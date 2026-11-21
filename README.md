@@ -124,42 +124,42 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 ```text
 .
-├── notebooks/                                       # Canonical Jupyter notebooks directory (Section 5 deliverable)
-│   └── ML_Assignment_Diabetes_Readmission_models.ipynb  # Main end-to-end executable notebook
-├── README.md                                        # Project documentation and metadata
-├── requirements.txt                                 # Environment dependencies
+├── notebooks/
+│   └── ML_Assignment_Diabetes_Readmission_models.ipynb
+├── README.md
+├── requirements.txt
 ├── data/
-│   └── raw/                                         # Automated extraction folder for UCI data
-├── features/                                        # Exported canonical .npy arrays
-│   ├── X_train_processed.npy                        # Processed training features (79,512 x 226)
-│   ├── X_test_processed.npy                         # Processed test features (19,831 x 226)
-│   ├── y_train.npy, y_test.npy                      # Target class arrays
-│   ├── groups_train.npy, groups_test.npy            # Patient group arrays (int64)
-│   ├── X_train_pca90.npy, X_test_pca90.npy          # PCA 90% variance projections
-│   ├── X_train_pca95.npy, X_test_pca95.npy          # PCA 95% variance projections
-│   └── feature_names.json                           # Names of all 226 encoded features
-├── models/                                          # Exported champion models
+│   └── raw/
+├── features/
+│   ├── X_train_processed.npy
+│   ├── X_test_processed.npy
+│   ├── y_train.npy, y_test.npy
+│   ├── groups_train.npy, groups_test.npy
+│   ├── X_train_pca90.npy, X_test_pca90.npy
+│   ├── X_train_pca95.npy, X_test_pca95.npy
+│   └── feature_names.json
+├── models/
 │   ├── best_linear_svm.joblib
 │   ├── logistic_regression_pipeline.joblib
 │   ├── best_random_forest.joblib
-│   ├── best_mlp.pt                                  # PyTorch champion checkpoint
+│   ├── best_mlp.pt
 │   └── mlp_preprocessor.joblib
-├── modules/                                         # Modular Python source files
+├── modules/
 │   ├── __init__.py
-│   ├── preprocessing.py                             # Missing code standardization, encoding, pipeline
-│   ├── evaluation.py                                # Standard classification reports & metrics
-│   ├── svm_model.py                                 # Linear SVM CV & tuning utilities
-│   ├── logistic_regression_model.py                 # Warm-start SAGA LR & CV functions
-│   ├── random_forest_model.py                       # RF hyperparameter search & feature importance
-│   └── mlp_model.py                                 # PyTorch DiabetesMLP architecture, dataset, training
-├── reports/                                         # Academic report directory (holds final Report PDF)
-└── results/                                         # Experimental metrics, figures, and CSV artifacts
-    ├── master_model_comparison.csv                  # 4-model held-out test benchmark
-    ├── master_cv_configurations_comparison.csv      # All 21 tested configurations
-    ├── svm/                                         # SVM metrics and CV logs
-    ├── lr/                                          # Logistic Regression metrics and CV logs
-    ├── rf/                                          # Random Forest metrics, top features, and CV logs
-    └── mlp/                                         # MLP training history, confusion matrix, loss curves
+│   ├── preprocessing.py
+│   ├── evaluation.py
+│   ├── svm_model.py
+│   ├── logistic_regression_model.py
+│   ├── random_forest_model.py
+│   └── mlp_model.py
+├── reports/
+└── results/
+    ├── master_model_comparison.csv
+    ├── master_cv_configurations_comparison.csv
+    ├── svm/
+    ├── lr/
+    ├── rf/
+    └── mlp/
 ```
 
 ---
