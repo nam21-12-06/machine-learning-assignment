@@ -46,3 +46,7 @@ ml_assignment/
 # Local assignment source document; do not redistribute without permission
 MLAssignment_ELv2.pdf
 docs/
+
+# Final submission folder and archives
+submission/
+*.zip

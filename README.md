@@ -89,9 +89,9 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 | Rank  | Model                   | Best Configuration                           | Test Accuracy | Balanced Accuracy | Test Macro-F1 | `<30` Recall |  `<30` F1  | Macro ROC-AUC |
 | :---: | :---------------------- | :------------------------------------------- | :-----------: | :---------------: | :-----------: | :----------: | :--------: | :-----------: |
-| **1** | **MLP (Deep Learning)** | 226-128-64-32-3 (BN, ReLU, Dropout)          |    0.5129     |    **0.4693**     |  **0.4526**   |  **0.3752**  | **0.2762** |    0.6669     |
-| **2** | **Random Forest**       | RF-8 (Trees=100, Depth=18, Leaf=5, Balanced) |    0.5170     |      0.4649       |    0.4494     |    0.3623    |   0.2642   |  **0.6691**   |
-| **3** | **Linear SVM**          | SVM-2 (Standard, No PCA, C=1, Balanced)      |  **0.5594**   |      0.4372       |    0.4393     |    0.1599    |   0.1939   |      N/A      |
+| **1** | **Random Forest**       | RF-8 (Trees=100, Depth=18, Leaf=5, Balanced) |    0.5332     |      0.4589       |  **0.4539**   |    0.2833    |   0.2476   |  **0.6688**   |
+| **2** | **MLP (Deep Learning)** | 226-128-64-32-3 (BN, ReLU, Dropout)          |    0.4955     |    **0.4747**     |    0.4439     |  **0.4600**  | **0.2864** |    0.6637     |
+| **3** | **Linear SVM**          | SVM-6 (Standard, No PCA, C=0.1, Balanced)    |  **0.5594**   |      0.4372       |    0.4393     |    0.1599    |   0.1940   |      N/A      |
 | **4** | **Logistic Regression** | LR-1 (Standard, No PCA, SAGA, Balanced)      |    0.4854     |      0.4477       |    0.4310     |    0.3153    |   0.2421   |    0.6533     |
 
 <p align="center">
@@ -113,10 +113,10 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 
 ### Findings & Insights:
 
-1. **Overall Champion**: The **Multilayer Perceptron (MLP)** achieved the highest test Macro-F1 (**0.4526**) and Balanced Accuracy (**46.93%**), confirming that deep funnel architectures effectively capture non-linear clinical interactions.
-2. **Clinical Sensitivity**: The MLP caught **37.52%** of early readmissions (`<30`), higher than Random Forest (36.23%) and Linear SVM (15.99%).
-3. **Traditional ML Champion**: **Random Forest** is the leading traditional model, providing the highest probability discrimination (ROC-AUC 0.6691) and interpretable feature rankings.
-4. **Effect of PCA**: PCA consistently degraded performance across all models (e.g., Random Forest dropped from 0.4494 to 0.4074 with PCA 90%), demonstrating that sparse clinical signals are lost under linear compression.
+1. **Overall Champion & Ranking Discrimination**: **Random Forest** (RF-8) achieved the highest overall test Macro-F1 (**0.4539**) and highest probability ranking discrimination (Global Macro ROC-AUC **0.6688**), proving that bagged decision trees with axis-aligned splits effectively capture non-linear relationships across tabular clinical indicators.
+2. **Clinical Sensitivity Leader**: The **Multilayer Perceptron (MLP)** achieved the highest Balanced Accuracy (**47.47%**) and demonstrated the strongest early readmission sensitivity, capturing **46.00%** of high-risk patients (`<30`) with the highest minority-class F1-score (**0.2864**), substantially outperforming Random Forest (28.33%) and Linear SVM (15.99%) in detecting the most vulnerable patients.
+3. **Linear Baselines & Majority Bias**: **Linear SVM** scored the highest raw accuracy (**55.94%**) but suffered from high majority conservatism (`<30` recall only 15.99%), while **Logistic Regression** (SAGA) maintained a balanced sensitivity of 31.53% for early readmissions (Macro-F1 0.4310).
+4. **Effect of PCA**: PCA consistently degraded performance across all architectures (e.g., Random Forest dropped from 0.4553 in CV without PCA down to 0.4354 with PCA 95% and 0.4324 with PCA 90%), demonstrating that sparse clinical signals are lost under linear compression.
 
 ---
 
