@@ -152,7 +152,8 @@ All four model paradigms were evaluated on the exact same held-out test partitio
 │   ├── logistic_regression_model.py                 # Warm-start SAGA LR & CV functions
 │   ├── random_forest_model.py                       # RF hyperparameter search & feature importance
 │   └── mlp_model.py                                 # PyTorch DiabetesMLP architecture, dataset, training
-├── reports/                                         # Academic report directory (holds final Report PDF)
+├── reports/                                         # Academic report directory
+│   └── ML_Assignment_Report.pdf                     # Final academic PDF report
 └── results/                                         # Experimental metrics, figures, and CSV artifacts
     ├── master_model_comparison.csv                  # 4-model held-out test benchmark
     ├── master_cv_configurations_comparison.csv      # All 21 tested configurations
@@ -217,7 +218,7 @@ All four model paradigms were evaluated on the exact same held-out test partitio
   Saved under `reports/` (Access via [Google Drive](https://drive.google.com/drive/folders/1Y_24G4JwDfKJVK6l5-OkkJOtBVN78bRS?usp=drive_link))
 
 - **Submission `.zip` Directory Structure**:  
-  Formatted with `notebooks/`, `modules/`, `reports/`, `features/`, and `results/`.
+  Formatted with `notebooks/`, `modules/`, `reports/`, and `features/`.
 
 ---
 
